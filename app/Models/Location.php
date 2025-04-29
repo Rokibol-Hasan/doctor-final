@@ -43,4 +43,9 @@ class Location extends Model
     {
         return $this->belongsTo(Hospital::class);
     }
+
+    public function specializations()
+    {
+        return $this->hasMany(Specialization::class);
+    }
 }

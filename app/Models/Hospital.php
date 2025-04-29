@@ -12,7 +12,13 @@ class Hospital extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'slug', 'location_id', 'address', 'phone', 'email', 'website',
+        'name',
+        'slug',
+        'location_id',
+        'address',
+        'phone',
+        'email',
+        'website',
     ];
 
 
@@ -32,7 +38,7 @@ class Hospital extends Model
     public function location()
     {
         return $this->belongsTo(Location::class);
-    }    
+    }
 
     public function chambers()
     {
@@ -45,5 +51,10 @@ class Hospital extends Model
     public function locations(): HasMany
     {
         return $this->hasMany(Location::class);
+    }
+
+    public function doctors()
+    {
+        return $this->hasMany(Doctor::class);
     }
 }

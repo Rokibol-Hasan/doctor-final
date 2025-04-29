@@ -11,7 +11,7 @@ class Specialization extends Model
     use HasFactory;
     
     protected $fillable = [
-        'name', 'slug',
+       'name', 'slug', 'location_id'
     ];
 
     protected static function boot()
@@ -30,5 +30,9 @@ class Specialization extends Model
     public function doctors()
     {
         return $this->hasMany(Doctor::class);
+    }
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
     }
 }
