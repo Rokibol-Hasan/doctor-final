@@ -11,14 +11,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // ==================== Doctor Flow ====================
 
-// Show all locations for Doctor flow
-Route::get('/doctors', [DoctorController::class, 'showLocations'])->name('doctor.locations');
+// Show doctors by location (e.g., /doctors-dhaka)
+Route::get('/doctors-{locationSlug}', [DoctorController::class, 'showSpecializations'])->name('doctor.specializations');
 
-// Show specializations in a specific location
-Route::get('/doctors/{locationSlug}', [DoctorController::class, 'showSpecializations'])->name('doctor.specializations');
-
-// Show doctors in a specific location and specialization
-Route::get('/doctors/{locationSlug}/{specializationSlug}', [DoctorController::class, 'showDoctors'])->name('doctor.list');
+// Show doctors by specialization in location (e.g., /cancer-dhaka)
+Route::get('/{specializationSlug}-{locationSlug}', [DoctorController::class, 'showDoctors'])->name('doctor.list');
 
 // Show single doctor profile
 Route::get('/{doctorSlug}', [DoctorController::class, 'showDoctorProfile'])->name('doctor.profile');

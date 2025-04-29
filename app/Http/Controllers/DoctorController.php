@@ -18,23 +18,23 @@ class DoctorController extends Controller
     public function showSpecializations($locationSlug)
     {
         $location = Location::where('slug', $locationSlug)->firstOrFail();
-        $specializations = $location->specializations;
+        $specializations = Specialization::where('location_id', $location->id)->get(); // Filter by location
         return view('doctors.specializations', compact('location', 'specializations'));
     }
 
-    public function showDoctors($locationSlug, $specializationSlug)
+    public function showDoctors($specializationSlug, $locationSlug)
     {
         $location = Location::where('slug', $locationSlug)->firstOrFail();
-        $specialization = Specialization::where('slug', $specializationSlug)->firstOrFail();
-
-        $doctors = Doctor::with('chambers')
+        $specialization = Specialization::where('slug', $specializationSlug)
             ->where('location_id', $location->id)
+            ->firstOrFail();
+    
+        $doctors = Doctor::where('location_id', $location->id)
             ->where('specialization_id', $specialization->id)
             ->get();
-
-        return view('doctors.list', compact('location', 'specialization', 'doctors'));
+    
+        return view('doctors.list', compact('doctors', 'location', 'specialization'));
     }
-
     public function showDoctorProfile($slug)
     {
         $doctor = Doctor::where('slug', $slug)

@@ -1,4 +1,10 @@
-<!-- resources/views/home.blade.php -->
-<h1>Welcome to Health Directory</h1>
-<a href="{{ url('/doctors') }}">Doctor</a>
-<a href="{{ url('/hospitals') }}">Hospital</a>
+<h2>Select a Location</h2>
+<ul>
+    @foreach($locations as $location)
+        <li>
+            <a href="{{ url('/doctors-' . $location->slug) }}">
+                {{ $location->name }}
+            </a>
+        </li>
+    @endforeach
+</ul>
