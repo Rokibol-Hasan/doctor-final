@@ -6,8 +6,15 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\HospitalController;
 
+
+// ajax load
+Route::get('/get-locations', function () {
+    $locations = \App\Models\Location::select('name', 'slug')->get();
+    return response()->json($locations);
+});
+
 // Home Page
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('pages.home');
 
 // ==================== Doctor Flow ====================
 

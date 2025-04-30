@@ -10,6 +10,6 @@ class HomeController extends Controller
 
     {
         $locations = \App\Models\Location::all();
-        return view('home', compact('locations'));
+        return view('pages.home', compact('locations'));
     }
 }
