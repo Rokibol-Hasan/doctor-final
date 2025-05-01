@@ -24,18 +24,7 @@
                                                 <li><span class="dropdown-item-text text-muted">Loading...</span></li>
                                             </ul>
                                         </div>
-                                    
-                                        <div class="dropdown" id="doctorDropdownWrapper2">
-                                            <button class="btn btn-success dropdown-toggle px-4 py-3 fs-5" type="button" id="doctorDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Doctor 2
-                                            </button>
-                                            <ul class="dropdown-menu" id="doctorDropdownMenu2">
-                                                <li><span class="dropdown-item-text text-muted">Loading...</span></li>
-                                            </ul>
-                                        </div>
                                     </div>
-                                    
-                                    
                                 </div>
                             </div>
                         </div>
